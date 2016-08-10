@@ -1,7 +1,9 @@
 # Semper-Vigilans-Pi
 The Always Vigilant Network Monitoring Device
 
-[Word Doc](https://github.com/Kilo59/Semper-Vigilans-Pi/raw/master/SemperVigilansPi.doc)
+##[Word Doc](https://github.com/Kilo59/Semper-Vigilans-Pi/raw/master/SemperVigilansPi.doc)
+
+![Example](https://github.com/Kilo59/Semper-Vigilans-Pi/blob/master/images/speed_tweet1.PNG?raw=true)
 
 ###Abstract
 This paper outlines the creation and operation of a lightweight, remotely accessed Raspberry Pi based network testing device. The device interfaces with Twitter and Google App APIs to read from and send information back to the user.
@@ -37,6 +39,11 @@ Twitter credentials must be obtained from https://apps.twitter.com/. Keys and ac
 
 ##IV.	OPERATION AND USE
 When running the device will check the Google Spreadsheet for configuration settings. It will match the current system time against the arguments it receives from the spreadsheet, if it finds a match a network test will procced. The network test results will be appended to a local .txt file stored on the local drive and the ‘log’ worksheet within the spreadsheet. The result will be ‘tweeted’ out if the appropriate argument is received. If indicated the tweet will be preceded by an @mention and followed by secondary tweet with a customized message. The script will loop according to an interval passed from the configuration sheet.
+
+![Settings](https://github.com/Kilo59/Semper-Vigilans-Pi/blob/master/images/Capture.PNG?raw=true)
+
+![TwitterBot](https://github.com/Kilo59/Semper-Vigilans-Pi/blob/master/images/Speed_tweeter.png?raw=true)
+
 ##V.	CONCLUSION
 Potential improvements could take the form of twitter based configuration of the device and automated warning when network performance drops below a certain level. Limitations inherent to the Raspberry Pi Ethernet port results in inaccurate speed-tests on networks with over 100Mbits/s bandwidth. However, the device still retains its use as early detector of network problems even while the user is away from home.     
 ##REFERENCES
