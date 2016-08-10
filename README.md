@@ -1,6 +1,8 @@
 # Semper-Vigilans-Pi
 The Always Vigilant Network Monitoring Device
 
+####Note: I created this project when I was first starting to learn Python. There's a lot wrong with it, have mercy.
+
 ##[Word Doc](https://github.com/Kilo59/Semper-Vigilans-Pi/raw/master/SemperVigilansPi.doc)
 
 ![Example](https://github.com/Kilo59/Semper-Vigilans-Pi/blob/master/images/speed_tweet1.PNG?raw=true)
