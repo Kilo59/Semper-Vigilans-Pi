@@ -22,9 +22,7 @@ def current_hour():
     date = time.localtime(time.time())
     now = datetime.datetime.now()
     hour = '%d' % now.hour
-    currentHour = str(hour)
-
-    return currentHour
+    return str(hour)
 
 ###Get GoogleApp credentials from JSON file in directory
 scope = ['https://spreadsheets.google.com/feeds']
@@ -126,10 +124,7 @@ while loops > 0:
 
     #check config_ws for tweet settings
     mention = ''
-    if config_ws.acell('B8').value == ('yes'):
-        tweet_boolean = True
-    else:
-        tweet_boolean = False
+    tweet_boolean = True if config_ws.acell('B8').value == 'yes' else False
     #check for @mention
     mention = config_ws.acell('B5').value
     #get outgoing message
@@ -158,4 +153,4 @@ while loops > 0:
     time.sleep(15 * loopLength)
     print('***LOOP'+str(loopNum)+'***')
     #Debug
-    loops = loops - 1
+    loops -= 1

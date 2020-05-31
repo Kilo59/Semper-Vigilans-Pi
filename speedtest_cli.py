@@ -182,9 +182,7 @@ def distance(origin, destination):
          math.cos(math.radians(lat2)) * math.sin(dlon / 2) *
          math.sin(dlon / 2))
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    d = radius * c
-
-    return d
+    return radius * c
 
 
 def build_user_agent():
@@ -212,11 +210,7 @@ def build_request(url, data=None, headers={}):
 
     """
 
-    if url[0] == ':':
-        schemed_url = '%s%s' % (scheme, url)
-    else:
-        schemed_url = url
-
+    schemed_url = '%s%s' % (scheme, url) if url[0] == ':' else url
     headers['User-Agent'] = user_agent
     return Request(schemed_url, data=data, headers=headers)
 
@@ -269,7 +263,7 @@ def downloadSpeed(files, quiet=False):
             thread = FileGetter(file, start)
             thread.start()
             q.put(thread, True)
-            if not quiet and not shutdown_event.isSet():
+            if not (quiet or shutdown_event.isSet()):
                 sys.stdout.write('.')
                 sys.stdout.flush()
 
@@ -334,7 +328,7 @@ def uploadSpeed(url, sizes, quiet=False):
             thread = FilePutter(url, start, size)
             thread.start()
             q.put(thread, True)
-            if not quiet and not shutdown_event.isSet():
+            if not (quiet or shutdown_event.isSet()):
                 sys.stdout.write('.')
                 sys.stdout.flush()
 
@@ -504,7 +498,7 @@ def getBestServer(servers):
         cum = []
         url = '%s/latency.txt' % os.path.dirname(server['url'])
         urlparts = urlparse(url)
-        for i in range(0, 3):
+        for _ in range(3):
             try:
                 if urlparts[0] == 'https':
                     h = HTTPSConnection(urlparts[1])
